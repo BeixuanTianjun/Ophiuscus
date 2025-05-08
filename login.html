@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Futuristic Pop-up Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+<style>
+  /* Reset and base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Orbitron', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: radial-gradient(circle at center, #000a12 0%, #000101 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #00ffe7;
+  }
+
+  /* Main content behind popup */
+  .content {
+    text-align: center;
+    max-width: 320px;
+    color: #00ffe7;
+    text-shadow:
+      0 0 10px #00ffe7,
+      0 0 20px #0ff,
+      0 0 30px #00ffe7;
+  }
+  .content h1 {
+    font-weight: 500;
+    margin-bottom: 12px;
+    font-size: 2.4rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .content p {
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+  }
+  .btn-login-open {
+    background: transparent;
+    color: #00ffe7;
+    border: 2px solid #00ffe7;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.4s, box-shadow 0.4s;
+    filter: drop-shadow(0 0 12px #00ffe7);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+  }
+  .btn-login-open:hover {
+    background-color: #00ffe799;
+    box-shadow:
+      0 0 12px #00ffe7,
+      0 0 15px #00ffe7,
+      0 0 20px #0ef;
+  }
+
+  /* Overlay popup */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 15, 25, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .overlay.active {
+    display: flex;
+  }
+
+  /* Popup box */
+  .popup {
+    background: #01111c;
+    width: 320px;
+    max-width: 90vw;
+    border-radius: 10px;
+    padding: 28px 32px 36px 32px;
+    box-shadow:
+      0 0 14px #00ffe7,
+      inset 0 0 22px #00ffe7;
+    position: relative;
+    border: 2px solid #00ffe7;
+    outline: none;
+  }
+
+  /* Close button */
+  .popup .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: #00ffe7;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    text-shadow:
+      0 0 8px #00ffe7,
+      0 0 12px #0ff;
+  }
+  .popup .close-btn:hover {
+    color: #0ff;
+    text-shadow:
+      0 0 12px #00fff7,
+      0 0 20px #0ff;
+  }
+
+  /* Form styling */
+  .popup h2 {
+    margin-top: 0;
+    color: #00ffe7;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow:
+      0 0 8px #00ffe7,
+      0 0 14px #0ff;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #00ffe7;
+    text-shadow: 0 0 6px #00ffe7;
+    letter-spacing: 1px;
+  }
+  input[type="text"],
+  input[type="password"] {
+    padding: 14px 14px;
+    border-radius: 6px;
+    border: 1.5px solid #00ffe7;
+    outline: none;
+    font-size: 1.1rem;
+    background-color: #001925;
+    color: #00fff7;
+    text-shadow: 0 0 5px #00ffe7;
+    caret-color: #00ffe7;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  input[type="text"]::placeholder,
+  input[type="password"]::placeholder {
+    color: #00ffc5cc;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #0ff;
+    box-shadow: 0 0 10px #0ff;
+    background-color: #002432;
+  }
+
+  /* Login button */
+  .btn-login-submit {
+    margin-top: 12px;
+    padding: 14px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(270deg, #00fff7, #00e2ff);
+    color: #01111c;
+    cursor: pointer;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    box-shadow:
+      0 0 20px #00e2ff,
+      0 0 40px #00cfff;
+    transition: background-position 0.4s ease, box-shadow 0.4s ease;
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+  }
+  .btn-login-submit:hover {
+    background-position: 100% 50%;
+    box-shadow:
+      0 0 24px #00fff7,
+      0 0 50px #00fff7;
+  }
+
+  /* Responsive for mobile */
+  @media (max-width: 400px) {
+    .popup {
+      width: 90vw;
+      padding: 24px 28px 32px 28px;
+    }
+    .content {
+      max-width: 90vw;
+    }
+  }
+
+  /* Error message styling */
+  .error-msg {
+    color: #ff004d;
+    font-weight: 600;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="content">
+  <h1>Welcome to Our Site</h1>
+  <p>Click the button below to login.</p>
+  <button class="btn-login-open" id="openLoginBtn" aria-haspopup="dialog" aria-controls="loginPopup">Login</button>
+</div>
+
+<div class="overlay" id="loginPopup" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-hidden="true">
+  <div class="popup" tabindex="-1">
+    <button class="close-btn" id="closeLoginBtn" aria-label="Close login form">&times;</button>
+    <h2 id="popupTitle">Login</h2>
+    <form id="loginForm" autocomplete="off" novalidate>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="username" />
+      
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password" />
+      
+      <div class="error-msg" id="errorMsg">Invalid username or password.</div>
+      
+      <button type="submit" class="btn-login-submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('openLoginBtn');
+  const closeBtn = document.getElementById('closeLoginBtn');
+  const overlay = document.getElementById('loginPopup');
+  const popup = overlay.querySelector('.popup');
+  const loginForm = document.getElementById('loginForm');
+  const errorMsg = document.getElementById('errorMsg');
+
+  // Open popup
+  openBtn.addEventListener('click', () => {
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    popup.focus();
+    errorMsg.style.display = 'none';
+  });
+
+  // Close popup
+  closeBtn.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+    openBtn.focus();
+  });
+
+  // Close on overlay click
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      openBtn.focus();
+    }
+  });
+
+  // Trap focus inside popup while open
+  document.addEventListener('keydown', (e) => {
+    if (overlay.classList.contains('active')) {
+      const focusableElements = popup.querySelectorAll('input, button');
+      const firstEl = focusableElements[0];
+      const lastEl = focusableElements[focusableElements.length -1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else {
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      }
+      if (e.key === 'Escape') {
+        overlay.classList.remove('active');
+        overlay.setAttribute('aria-hidden', 'true');
+        openBtn.focus();
+      }
+    }
+  });
+
+  // Dummy valid credentials for demonstration
+  const validUsername = 'LORDMW';
+  const validPassword = 'lordmw123';
+
+  // Handle form submission with validation and redirect
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = loginForm.username.value.trim();
+    const password = loginForm.password.value;
+    if(username === validUsername && password === validPassword) {
+      // Successful login: redirect to test.html
+      window.location.href = 'test.html';
+    } else {
+      // Show error message
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = "Invalid username or password.";
+    }
+  });
+</script>
+</body>
+</html>
+</content>
+</create_file>
