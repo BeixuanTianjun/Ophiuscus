@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Dashboard</title>
+    <link rel="icon" href="https://storage.googleapis.com/a1aa/image/URLqGX9Xy3tVyrkcVGMNlfCJO5PD56MURM5UmihFOXg.jpg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-900 text-white">
+    <header class="flex flex-col md:flex-row items-center justify-between p-4 border-b border-gray-700">
+        <div class="flex items-center space-x-4">
+            <img src="https://storage.googleapis.com/a1aa/image/URLqGX9Xy3tVyrkcVGMNlfCJO5PD56MURM5UmihFOXg.jpg" alt="Logo" class="w-10 h-10">
+            <h1 class="text-2xl font-bold">Bitcoin</h1>
+        </div>
+        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+            <input type="text" placeholder="Search (Ctrl+K)" class="bg-gray-800 text-white p-2 rounded">
+            <nav class="hidden md:flex space-x-4">
+                <a href="#" class="hover:text-gray-400">Products</a>
+                <a href="#" class="hover:text-gray-400">Community</a>
+                <a href="#" class="hover:text-gray-400">Markets</a>
+                <a href="#" class="hover:text-gray-400">Brokers</a>
+                <a href="#" class="hover:text-gray-400">More</a>
+            </nav>
+            <button class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Upgrade</button>
+            <img src="https://storage.googleapis.com/a1aa/image/ZFRsXtrjCnUIXeYZ4Qvg6O4OCltcWm5tnBzvyOKVLo0.jpg" alt="User Avatar" class="w-10 h-10 rounded-full">
+        </div>
+    </header>
+    <main class="flex flex-col md:flex-row">
+        <section class="flex-1 p-4">
+            <div class="flex items-center space-x-4">
+                <img src="https://storage.googleapis.com/a1aa/image/uSvZaZRSbOUCOOEeB1YOSZ-lBmtmSr5OR2SonGZCV-0.jpg" alt="Bitcoin Logo" class="w-16 h-16">
+                <div>
+                    <h2 class="text-4xl font-bold">Bitcoin</h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-gray-800 text-white px-2 py-1 rounded">BTCUSD</span>
+                        <span class="bg-gray-800 text-white px-2 py-1 rounded">Binance</span>
+                        <button class="bg-purple-600 text-white px-2 py-1 rounded hover:bg-purple-700"><i class="fas fa-share"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <h3 class="text-6xl font-bold text-red-600">79,879.12 USD</h3>
+                <p class="text-xl text-red-600">-4,778.13 -5.64%</p>
+                <p class="text-gray-400">As of today at 12:24 GMT+7</p>
+            </div>
+            <nav class="mt-4 flex space-x-4 border-b border-gray-700 overflow-x-auto">
+                <a href="#" class="pb-2 border-b-2 border-white">Overview</a>
+                <a href="#" class="pb-2 hover:border-b-2 hover:border-white">News</a>
+                <a href="#" class="pb-2 hover:border-b-2 hover:border-white">Ideas</a>
+                <a href="#" class="pb-2 hover:border-b-2 hover:border-white">Discussions</a>
+                <a href="#" class="pb-2 hover:border-b-2 hover:border-white">Technicals</a>
+                <a href="#" class="pb-2 hover:border-b-2 hover:border-white">Seasonals</a>
+                <a href="#" class="pb-2 hover:border-b-2 hover:border-white">Markets</a>
+            </nav>
+            <div class="mt-4">
+                <h4 class="text-2xl font-bold">BTCUSD chart</h4>
+                <div class="flex space-x-4 mt-2">
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Price</button>
+                    <button class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700">Market Cap</button>
+                </div>
+                <img src="https://storage.googleapis.com/a1aa/image/87ZvAW1vn8N5vnKOInpXBYCuzS7XIvkYS13wCYTTu-c.jpg" alt="BTCUSD Chart" class="mt-4 w-full rounded">
+            </div>
+            <div class="mt-4">
+                <h4 class="text-2xl font-bold">AI Market Prediction</h4>
+                <form class="mt-2" action="chart.html" method="get">
+                    <input type="text" 
+                           name="query"
+                           placeholder="Enter your query for AI prediction" 
+                           class="bg-gray-800 text-white p-2 rounded w-full">
+                    <div class="mt-2">
+                        <button type="submit" class="bg-purple-600 text-white px-4 py-2 rounded w-full hover:bg-purple-700">Predict</button>
+                    </div>
+                </form>
+                <div class="mt-4 p-4 bg-gray-800 rounded">
+                    <h4 class="text-xl font-bold">AI Prediction Result</h4>
+                    <p class="text-gray-400 mt-2">The AI predicts that based on Fibonacci retracement and trendlines, the market is expected to...</p>
+                </div>
+            </div>
+        </section>
+        <aside class="w-full md:w-1/4 p-4 border-t md:border-t-0 md:border-l border-gray-700">
+            <h4 class="text-xl font-bold">Watchlist</h4>
+            <div class="mt-4">
+                <div class="flex justify-between">
+                    <span>TSLA</span>
+                    <span class="text-red-600">281.95</span>
+                    <span class="text-red-600">-8.85</span>
+                    <span class="text-red-600">-3.04%</span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span>NFLX</span>
+                    <span class="text-red-600">963.07</span>
+                    <span class="text-red-600">-26.99</span>
+                    <span class="text-red-600">-2.73%</span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span>USOIL</span>
+                    <span class="text-red-600">69.98</span>
+                    <span class="text-red-600">-0.07</span>
+                    <span class="text-red-600">-0.10%</span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span>GOLD</span>
+                    <span class="text-red-600">2,864.320</span>
+                    <span class="text-red-600">-12.165</span>
+                    <span class="text-red-600">-0.42%</span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span>SILVER</span>
+                    <span class="text-red-600">31.2083</span>
+                    <span class="text-red-600">-0.0237</span>
+                    <span class="text-red-600">-0.08%</span>
+                </div>
+            </div>
+            <h4 class="text-xl font-bold mt-4">Futures</h4>
+            <div class="mt-4">
+                <div class="flex justify-between">
+                    <span>EURUSD</span>
+                    <span class="text-red-600">1.0382</span>
+                    <span class="text-red-600">-0.0009</span>
+                    <span class="text-red-600">-0.09%</span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span>GBPUSD</span>
+                    <span class="text-red-600">1.2585</span>
+                    <span class="text-red-600">-0.0014</span>
+                    <span class="text-red-600">-0.11%</span>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span>USDJPY</span>
+                    <span class="text-red-600">149.653</span>
+                    <span class="text-red-600">-0.149</span>
+                    <span class="text-red-600">-0.10%</span>
+                </div>
+            </div>
+            <h4 class="text-xl font-bold mt-4">Crypto</h4>
+            <div class="mt-4">
+                <div class="flex justify-between">
+                    <span>BTCUSD</span>
+                    <span class="text-red-600">79,879.12</span>
+                    <span class="text-red-600">-4,778.13</span>
+                    <span class="text-red-600">-5.64%</span>
+                </div>
+            </div>
+            <div class="mt-4 p-4 bg-gray-800 rounded">
+                <h4 class="text-xl font-bold">BTCUSD</h4>
+                <p class="text-gray-400">Bitcoin / U.S. Dollar • BINANCE</p>
+                <p class="text-gray-400">Spot • Crypto</p>
+                <h3 class="text-4xl font-bold text-red-600 mt-2">79,879.12 USD</h3>
+                <p class="text-xl text-red-600">-4,778.13 -5.64%</p>
+                <p class="text-green-600 mt-2">Market open</p>
+                <p class="text-gray-400 mt-2">On February 10, 14,000 Bitcoin, which had been inactive for seven to ten years, were moved, with no transfers to exchanges, suggesting they are not intended for immediate sale.</p>
+                <h4 class="text-xl font-bold mt-4">Key stats</h4>
+                <div class="mt-2">
+                    <div class="flex justify-between">
+                        <span>Volume</span>
+                        <span>265.95</span>
+                    </div>
+                    <div class="flex justify-between mt-2">
+                        <span>Average Volume (30D)</span>
+                        <span>311.06</span>
+                    </div>
+                    <div class="flex justify-between mt-2">
+                        <span>Trading volume 24h</span>
+                        <span>63.86 B</span>
+                    </div>
+                    <div class="flex justify-between mt-2">
+                        <span>Market capitalization</span>
+                        <span>1.59 T</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- TradingView Widget -->
+    <div id="tradingview_btcusd"></div>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+    <script>
+        new TradingView.widget({
+            "width": "100%",
+            "height": 610,
+                "symbol": "BINANCE:BTCUSD"
+            });
